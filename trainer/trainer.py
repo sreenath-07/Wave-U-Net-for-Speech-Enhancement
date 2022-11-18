@@ -100,7 +100,7 @@ class Trainer(BaseTrainer):
                         np.max(y),
                         np.min(y)
                     ))
-                    librosa.display.waveplot(y, sr=16000, ax=ax[j])
+                    librosa.display.waveshow(y, sr=16000, ax=ax[j])
                 plt.tight_layout()
                 self.writer.add_figure(f"Waveform/{name}", fig, epoch)
 

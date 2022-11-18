@@ -91,6 +91,7 @@ class BaseTrainer:
             is_best(bool): if current checkpoint got the best score, it also will be saved in <root_dir>/checkpoints/best_model.tar.
         """
         print(f"\t Saving {epoch} epoch model checkpoint...")
+        print(self.checkpoints_dir)
 
         # Construct checkpoint tar package
         state_dict = {
@@ -113,6 +114,7 @@ class BaseTrainer:
             - best_model.tar:
                 Like latest_model, but only saved when <is_best> is True.
         """
+
         torch.save(state_dict, (self.checkpoints_dir / "latest_model.tar").as_posix())
         torch.save(state_dict["model"], (self.checkpoints_dir / f"model_{str(epoch).zfill(4)}.pth").as_posix())
         if is_best:
